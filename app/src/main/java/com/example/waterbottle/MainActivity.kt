@@ -37,7 +37,7 @@ import androidx.compose.ui.unit.sp
 import com.example.waterbottle.ui.theme.WaterBottleTheme
 import kotlin.io.path.moveTo
 import androidx.compose.foundation.Canvas as Canvas
-import androidx.compose.foundation.layout.Box as Box1
+import androidx.compose.foundation.layout.Box as Box
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -95,7 +95,7 @@ fun WaterBottle(
         label = "Used water amount animation",
         animationSpec = tween(durationMillis = 1000)
     ).value
-    Box1(
+    Box(
         modifier = modifier
             .width(200.dp)
             .height(600.dp)
@@ -184,25 +184,25 @@ fun WaterBottle(
             val text = buildAnnotatedString {
                 withStyle(
                     style = SpanStyle(
-                        color = if(waterPercentage > 0.5f) bottleColor else waterColor,
+                        color = if (waterPercentage > 0.5f) bottleColor else waterColor,
                         fontSize = 44.sp
                     )
-                ){
+                ) {
                     append(usedWaterAmountAnimation.toString())
                 }
                 withStyle(
                     style = SpanStyle(
-                        color = if(waterPercentage > 0.5f) bottleColor else waterColor,
+                        color = if (waterPercentage > 0.5f) bottleColor else waterColor,
                         fontSize = 22.sp
                     )
-                ){
+                ) {
                     append(" ")
                     append(unit)
                 }
             }
-            Box1(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center){
-                Text(text = text)
+            Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center){ Text(text = text)
             }
+
         }
 
     }
